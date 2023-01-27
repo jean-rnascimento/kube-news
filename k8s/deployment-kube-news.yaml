@@ -44,6 +44,7 @@ kind: Deployment
 metadata: 
   name: web
 spec:
+  replicas: 10
   selector: 
     matchLabels:
       app: web
@@ -65,7 +66,7 @@ spec:
           - name: DB_PASSWORD
             value: "Pg#123"
           - name: DB_HOST
-            value: "postgres"
+            value: "postgre"
 
 ---
 
@@ -79,5 +80,4 @@ spec:
   ports:
     - port: 80
       targetPort: 8080
-      nodePort: 30000
-  type: NodePort
+  type: LoadBalancer
